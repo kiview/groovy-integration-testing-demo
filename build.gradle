@@ -1,0 +1,37 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url 'https://jitpack.io' }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.codehaus.groovy:groovy')
+
+	runtime('org.postgresql:postgresql')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.0-groovy-2.4'
+	testCompile 'com.github.testcontainers:testcontainers-spock:5e50b96fa6ff8112e2f323e2f26cbdb0b1528cdc'
+	testCompile group: 'org.testcontainers', name: 'postgresql', version: '1.2.0'
+}
