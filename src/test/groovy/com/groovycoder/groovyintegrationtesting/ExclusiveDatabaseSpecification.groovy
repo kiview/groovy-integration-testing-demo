@@ -16,7 +16,7 @@ abstract class ExclusiveDatabaseSpecification extends Specification {
                 .withUsername("groovy")
                 .withPassword("mobydock")
                 .withDatabaseName("groovy")
-        c.setPortBindings(["5432:5432"])
+        c.setPortBindings(["5432:5432"]) // bad practice!
         c
     }()
 

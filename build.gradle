@@ -27,6 +27,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.codehaus.groovy:groovy')
+	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
 
 	runtime('org.postgresql:postgresql')
 
