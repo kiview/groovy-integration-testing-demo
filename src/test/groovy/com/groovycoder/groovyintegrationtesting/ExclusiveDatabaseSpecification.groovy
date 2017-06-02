@@ -11,19 +11,15 @@ import spock.lang.Specification
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 abstract class ExclusiveDatabaseSpecification extends Specification {
 
-    static PostgreSQLContainer postgresContainer = {
-        def c = new PostgreSQLContainer()
-                .withUsername("groovy")
-                .withPassword("mobydock")
-                .withDatabaseName("groovy")
-        c.setPortBindings(["5432:5432"]) // bad practice!
-        c
-    }()
-
+    static PostgreSQLContainer postgresContainer = new PostgreSQLContainer()
+                                                        .withUsername("groovy")
+                                                        .withPassword("mobydock")
+                                                        .withDatabaseName("groovy")
 
     def setupSpec() {
         postgresContainer.start()
-        System.setProperty("spring.datasource.url", "jdbc:postgresql:groovy")
+        postgresContainer.getJdbcUrl()
+        System.setProperty("spring.datasource.url", postgresContainer.getJdbcUrl())
         System.setProperty("spring.datasource.username", "groovy")
         System.setProperty("spring.datasource.password", "mobydock")
 
@@ -32,6 +28,7 @@ abstract class ExclusiveDatabaseSpecification extends Specification {
     def cleanup() {
         postgresContainer.stop()
         postgresContainer.start()
+        System.setProperty("spring.datasource.url", postgresContainer.getJdbcUrl())
     }
 
     def cleanupSpec() {
