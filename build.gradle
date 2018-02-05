@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.2.RELEASE'
+		springBootVersion = '1.5.10.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -34,5 +34,6 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.0-groovy-2.4'
 	testCompile 'com.github.testcontainers:testcontainers-spock:5e50b96fa6ff8112e2f323e2f26cbdb0b1528cdc'
-	testCompile group: 'org.testcontainers', name: 'postgresql', version: '1.2.0'
+	testCompile 'com.github.testcontainers:testcontainers-spock:1.0.0-tc1.6.0'
+	testCompile group: 'org.testcontainers', name: 'postgresql', version: '1.6.0'
 }
