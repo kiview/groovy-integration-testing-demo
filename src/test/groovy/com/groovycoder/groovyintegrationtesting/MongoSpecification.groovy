@@ -2,7 +2,7 @@ package com.groovycoder.groovyintegrationtesting
 
 import com.groovycoder.spockdockerextension.Testcontainers
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.util.EnvironmentTestUtils
+import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.test.annotation.DirtiesContext
@@ -40,13 +40,14 @@ abstract class MongoSpecification extends Specification {
     static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         @Override
         void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            EnvironmentTestUtils.addEnvironment("testcontainers", configurableApplicationContext.getEnvironment(),
+            TestPropertyValues values = TestPropertyValues.of(
                     "spring.data.mongodb.host=" + staticContainerHandle.containerIpAddress,
                     "spring.data.mongodb.port=" + staticContainerHandle.getMappedPort(27017),
                     "spring.datasource.url=" + staticPostgresContainerHandle.jdbcUrl,
                     "spring.datasource.username=" + staticPostgresContainerHandle.username,
                     "spring.datasource.password=" + staticPostgresContainerHandle.password,
             )
+            values.applyTo(configurableApplicationContext)
         }
     }
 

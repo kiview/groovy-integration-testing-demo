@@ -2,7 +2,7 @@ package com.groovycoder.groovyintegrationtesting
 
 import com.groovycoder.spockdockerextension.Testcontainers
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.util.EnvironmentTestUtils
+import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.test.annotation.DirtiesContext
@@ -32,11 +32,12 @@ abstract class SharedDatabaseSpecification extends Specification {
     static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         @Override
         void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            EnvironmentTestUtils.addEnvironment("testcontainers", configurableApplicationContext.getEnvironment(),
+            TestPropertyValues values = TestPropertyValues.of(
                     "spring.datasource.url=" + staticContainerHandle.jdbcUrl,
                     "spring.datasource.username=" + staticContainerHandle.username,
                     "spring.datasource.password=" + staticContainerHandle.password,
             )
+            values.applyTo(configurableApplicationContext)
         }
     }
 

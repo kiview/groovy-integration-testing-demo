@@ -21,7 +21,7 @@ class MongoTests extends MongoSpecification {
         def customers = [alice, bob]
 
         when: "saving them"
-        repository.save(customers)
+        repository.saveAll(customers)
 
         then: "an id is assigned"
         customers*.id != null
