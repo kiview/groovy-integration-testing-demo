@@ -24,17 +24,18 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.codehaus.groovy:groovy')
-	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.codehaus.groovy:groovy')
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 
 	runtime('org.postgresql:postgresql')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.0-groovy-2.4'
-	testCompile 'com.github.testcontainers:testcontainers-spock:5e50b96fa6ff8112e2f323e2f26cbdb0b1528cdc'
-	testCompile 'com.github.testcontainers:testcontainers-spock:1.0.0-tc1.6.0'
-	testCompile group: 'org.testcontainers', name: 'postgresql', version: '1.6.0'
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation group: 'org.spockframework', name: 'spock-spring', version: '1.0-groovy-2.4'
+
+	testImplementation 'org.testcontainers:testcontainers-bom:1.8.1'
+	testImplementation 'org.testcontainers:spock'
+	testImplementation 'org.testcontainers:postgresql'
 }

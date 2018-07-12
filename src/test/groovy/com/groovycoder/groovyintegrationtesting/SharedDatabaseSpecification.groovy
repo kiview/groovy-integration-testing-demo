@@ -1,6 +1,5 @@
 package com.groovycoder.groovyintegrationtesting
 
-import com.groovycoder.spockdockerextension.Testcontainers
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
@@ -8,6 +7,7 @@ import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.ContextConfiguration
 import org.testcontainers.containers.PostgreSQLContainer
+import org.testcontainers.spock.Testcontainers
 import spock.lang.Shared
 import spock.lang.Specification
 
