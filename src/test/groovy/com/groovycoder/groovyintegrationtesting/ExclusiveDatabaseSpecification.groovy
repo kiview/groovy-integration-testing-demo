@@ -18,7 +18,6 @@ abstract class ExclusiveDatabaseSpecification extends Specification {
 
     def setupSpec() {
         postgresContainer.start()
-        postgresContainer.getJdbcUrl()
         System.setProperty("spring.datasource.url", postgresContainer.getJdbcUrl())
         System.setProperty("spring.datasource.username", "groovy")
         System.setProperty("spring.datasource.password", "mobydock")
