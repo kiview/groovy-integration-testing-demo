@@ -22,7 +22,7 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
-ext['groovy.version'] = '2.5.0'
+ext['groovy.version'] = '2.5.6'
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -36,7 +36,7 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation group: 'org.spockframework', name: 'spock-spring', version: '1.2-groovy-2.5'
 
-	testImplementation 'org.testcontainers:testcontainers-bom:1.10.0'
+	testImplementation platform('org.testcontainers:testcontainers-bom:1.10.0')
 	testImplementation 'org.testcontainers:spock'
 	testImplementation 'org.testcontainers:postgresql'
 }
