@@ -36,7 +36,7 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation group: 'org.spockframework', name: 'spock-spring', version: '1.2-groovy-2.5'
 
-	testImplementation platform('org.testcontainers:testcontainers-bom:1.10.0')
+	testImplementation platform('org.testcontainers:testcontainers-bom:1.12.5')
 	testImplementation 'org.testcontainers:spock'
 	testImplementation 'org.testcontainers:postgresql'
 }
